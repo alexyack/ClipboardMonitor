@@ -1,0 +1,1 @@
+// ClipboardMonitor.h
