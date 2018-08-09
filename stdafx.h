@@ -7,10 +7,11 @@
 #define AFX_STDAFX_H__26BECCC4_A3A7_411B_83B7_5CD803E6876F__INCLUDED_
 
 // Change these values to use different versions
-#define WINVER		0x0400
-//#define _WIN32_WINNT	0x0400
-#define _WIN32_IE	0x0400
-#define _RICHEDIT_VER	0x0100
+#define WINVER			0x0600
+#define _WIN32_WINNT	0x0600
+#define _WIN32_IE		0x0400
+
+#include <sdkddkver.h>
 
 #include <atlbase.h>
 #include <atlapp.h>

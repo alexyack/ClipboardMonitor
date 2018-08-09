@@ -102,6 +102,8 @@ LRESULT CMainDlg::OnDrawClipboard(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&
 	CBitmap bmp;
 	CImage image;
 	WTL::CString strname;
+	WIN32_FILE_ATTRIBUTE_DATA faData;
+	BOOL bInfo;
 
 	::SendMessage(m_hWndNextChain, uMsg, wParam, lParam);
 
@@ -120,12 +122,15 @@ LRESULT CMainDlg::OnDrawClipboard(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&
 
 			DoDataExchange(TRUE);
 
-			strname.Format(m_strFormat, m_nCurrentIndex);
+			do
+			{
+				strname.Format(m_strFormat, m_nCurrentIndex++);
+				bInfo = GetFileAttributesEx(strname, GetFileExInfoStandard, &faData);
+			}
+			while(bInfo);
 
 			image.Attach(bmp);
 			image.Save(strname);
-
-			m_nCurrentIndex++;
 
 			DoDataExchange();
 		}
